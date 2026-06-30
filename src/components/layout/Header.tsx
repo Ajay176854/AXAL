@@ -39,7 +39,7 @@ export default function Header() {
               src="/logo.png" 
               alt="AXAL Logo" 
               className="h-full w-auto object-contain transition-all duration-300" 
-              style={isSolid ? {} : { filter: 'invert(1) grayscale(1) contrast(2) url(#extract-white)' }} 
+              style={isSolid ? { mixBlendMode: 'multiply' } : { filter: 'invert(1) grayscale(1) contrast(2) url(#extract-white)' }} 
             />
           </Link>
 
