@@ -6,12 +6,11 @@ export default function Footer() {
           
           {/* Brand */}
           <div>
-            <a href="/" className="flex items-center h-16 mb-4">
+            <a href="/" className="flex items-center h-20 mb-4">
               <img 
                 src="/logo-v2.png" 
                 alt="AXAL Logo" 
                 className="h-full w-auto object-contain"
-                style={{ filter: 'invert(1) grayscale(1) contrast(2) url(#extract-white)' }} 
               />
             </a>
             <p className="text-sm leading-relaxed">

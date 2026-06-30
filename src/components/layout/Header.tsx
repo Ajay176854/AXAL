@@ -34,12 +34,12 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center h-14">
+          <Link to="/" className="flex items-center h-16">
             <img 
               src="/logo-v2.png" 
               alt="AXAL Logo" 
               className="h-full w-auto object-contain transition-all duration-300" 
-              style={isSolid ? { mixBlendMode: 'multiply' } : { filter: 'invert(1) grayscale(1) contrast(2) url(#extract-white)' }} 
+              style={isSolid ? { mixBlendMode: 'multiply' } : {}} 
             />
           </Link>
 
