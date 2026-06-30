@@ -38,9 +38,10 @@ export default function CapabilitiesPage() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg border border-neutral-100">
               <img 
-                src="/images/capability_thinwall.png" 
+                src="/images/capability_thinwall.webp" 
                 alt="Thin-wall injection molding production" 
                 className="w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
           </div>

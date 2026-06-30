@@ -23,15 +23,27 @@ export function useFrameAnimation(
     });
   }, [framePrefix, frameCount, frameExt]);
 
-  // Preload frames on mount
+  // Preload frames lazily to optimize page load speed
   useEffect(() => {
+    // If progress is 0, we only preload the first frame to keep initial loading fast
+    if (progress === 0) {
+      const firstFrameUrl = frameUrls[0];
+      if (firstFrameUrl && !loadedRef.current.has(firstFrameUrl)) {
+        const img = new Image();
+        img.src = firstFrameUrl;
+        img.onload = () => loadedRef.current.add(firstFrameUrl);
+      }
+      return;
+    }
+
+    // When user scrolls and progress > 0, preload the rest of the sequence
     frameUrls.forEach((url) => {
       if (loadedRef.current.has(url)) return;
       const img = new Image();
       img.src = url;
       img.onload = () => loadedRef.current.add(url);
     });
-  }, [frameUrls]);
+  }, [frameUrls, progress > 0]);
 
   // Map progress to frame index
   const frameIndex = Math.min(

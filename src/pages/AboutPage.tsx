@@ -70,9 +70,10 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
                   <img 
-                    src="/images/founder.png" 
+                    src="/images/founder.webp" 
                     alt="Founder of AXAL" 
                     className="w-full h-full object-cover object-top"
+                    loading="lazy"
                   />
                 </div>
                 {/* Decorative accent */}
