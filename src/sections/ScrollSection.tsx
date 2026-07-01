@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef, memo } from 'react';
 import { cn } from '../lib/utils';
 import { useFrameAnimation } from '../hooks/useFrameAnimation';
 import Tag from '../components/ui/Tag';
@@ -7,21 +7,41 @@ import type { Chapter } from '../data/chapters';
 interface ScrollSectionProps {
   chapter: Chapter;
   progress: number;
-  registerRef: (el: HTMLElement | null) => void;
+  index: number;
+  registerSection: (index: number, el: HTMLElement | null) => void;
 }
 
-export default function ScrollSection({
+function ScrollSection({
   chapter,
   progress,
-  registerRef,
+  index,
+  registerSection,
 }: ScrollSectionProps) {
   const isDark = chapter.headerTheme === 'dark';
-  const frameUrl = useFrameAnimation(
+  const { currentImage } = useFrameAnimation(
     chapter.framePrefix,
     chapter.frameCount,
     chapter.frameExt,
     progress,
   );
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !currentImage) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (canvas.width !== currentImage.naturalWidth || canvas.height !== currentImage.naturalHeight) {
+      canvas.width = currentImage.naturalWidth;
+      canvas.height = currentImage.naturalHeight;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(currentImage, 0, 0);
+  }, [currentImage]);
 
   // Determine which panel is active (0–3) based on progress (0–1)
   const activePanelIndex = Math.min(
@@ -31,9 +51,9 @@ export default function ScrollSection({
 
   const sectionRef = useCallback(
     (el: HTMLElement | null) => {
-      registerRef(el);
+      registerSection(index, el);
     },
-    [registerRef],
+    [registerSection, index],
   );
 
   return (
@@ -86,18 +106,14 @@ export default function ScrollSection({
                 </span>
               </div>
 
-              {/* Actual frame (hidden until frames exist) */}
-              {frameUrl && (
-                <img
-                  src={frameUrl}
-                  alt={`${chapter.label} product view`}
-                  className="scroll-section__frame-img"
-                  onError={(e) => {
-                    // Hide broken image, placeholder stays visible
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-              )}
+              {/* Actual frame canvas (hidden until frames exist) */}
+              <canvas
+                ref={canvasRef}
+                className="scroll-section__frame-canvas"
+                style={{
+                  display: currentImage ? 'block' : 'none',
+                }}
+              />
             </div>
           </div>
 
@@ -128,3 +144,5 @@ export default function ScrollSection({
     </section>
   );
 }
+
+export default memo(ScrollSection);

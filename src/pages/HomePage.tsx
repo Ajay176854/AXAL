@@ -32,7 +32,8 @@ export default function HomePage() {
           <ScrollSection
             chapter={chapter}
             progress={sectionProgress[i] ?? 0}
-            registerRef={(el: HTMLElement | null) => registerSection(i, el)}
+            index={i}
+            registerSection={registerSection}
           />
         </div>
       ))}

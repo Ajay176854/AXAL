@@ -1,4 +1,6 @@
-export default function OutroSection() {
+import { memo } from 'react';
+
+function OutroSection() {
   return (
     <section className="outro-section">
       <div className="outro-section__inner">
@@ -20,3 +22,5 @@ export default function OutroSection() {
     </section>
   );
 }
+
+export default memo(OutroSection);

@@ -41,9 +41,15 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     sectionProgress: Array.from({ length: sectionCount }, () => 0),
   });
 
+  const sectionDimensionsRef = useRef<( { offsetTop: number; offsetHeight: number } | null )[]>(
+    Array.from({ length: sectionCount }, () => null),
+  );
+
   const registerSection = useCallback(
     (index: number, el: HTMLElement | null) => {
       sectionsRef.current[index] = el;
+      // Invalidate cache for this section so it gets re-measured
+      sectionDimensionsRef.current[index] = null;
     },
     [],
   );
@@ -52,37 +58,65 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     let rafId: number | null = null;
     let isRunning = true;
 
+    const measureSections = () => {
+      const scrollY = window.scrollY;
+      sectionsRef.current.forEach((el, i) => {
+        if (!el) {
+          sectionDimensionsRef.current[i] = null;
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        sectionDimensionsRef.current[i] = {
+          offsetTop: rect.top + scrollY,
+          offsetHeight: el.offsetHeight,
+        };
+      });
+    };
+
     const onScroll = () => {
       const scrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const pageProgress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
 
+      // Ensure all registered sections have cached dimensions
+      let needsMeasure = false;
+      for (let i = 0; i < sectionsRef.current.length; i++) {
+        if (sectionsRef.current[i] && !sectionDimensionsRef.current[i]) {
+          needsMeasure = true;
+          break;
+        }
+      }
+      if (needsMeasure) {
+        measureSections();
+      }
+
       let activeSection = -1;
       const sectionProgress: number[] = [];
+      const viewportHeight = window.innerHeight;
 
       for (let i = 0; i < sectionsRef.current.length; i++) {
-        const el = sectionsRef.current[i];
-        if (!el) {
+        const dim = sectionDimensionsRef.current[i];
+        if (!dim) {
           sectionProgress.push(0);
           continue;
         }
 
-        const rect = el.getBoundingClientRect();
-        const sectionHeight = el.offsetHeight - window.innerHeight;
-
+        const sectionHeight = dim.offsetHeight - viewportHeight;
         if (sectionHeight <= 0) {
           sectionProgress.push(0);
           continue;
         }
 
         // How far the top of the section has scrolled past the top of the viewport
-        const scrolledPast = -rect.top;
+        const scrolledPast = scrollY - dim.offsetTop;
         const progress = Math.min(1, Math.max(0, scrolledPast / sectionHeight));
 
         sectionProgress.push(progress);
 
-        // Section is active when it occupies the viewport
-        if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) {
+        // Section is active when it occupies the viewport midpoint
+        const rectTop = dim.offsetTop - scrollY;
+        const rectBottom = rectTop + dim.offsetHeight;
+        if (rectTop <= viewportHeight * 0.5 && rectBottom >= viewportHeight * 0.5) {
           activeSection = i;
         }
       }
@@ -134,6 +168,7 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measureSections, { passive: true });
     
     // Initial calculation
     onScroll();
@@ -146,6 +181,7 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     return () => {
       isRunning = false;
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', measureSections);
       if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, [sectionCount]);

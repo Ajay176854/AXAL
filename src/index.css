@@ -244,7 +244,8 @@ body {
   justify-content: center;
 }
 
-.scroll-section__frame-img {
+.scroll-section__frame-img,
+.scroll-section__frame-canvas {
   position: absolute;
   inset: 0;
   width: 100%;

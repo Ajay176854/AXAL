@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { cn } from '../lib/utils';
 
 interface ChapterHeaderProps {
@@ -8,7 +9,7 @@ interface ChapterHeaderProps {
   theme: 'light' | 'dark';
 }
 
-export default function ChapterHeader({
+function ChapterHeader({
   number,
   label,
   title,
@@ -34,3 +35,5 @@ export default function ChapterHeader({
     </section>
   );
 }
+
+export default memo(ChapterHeader);

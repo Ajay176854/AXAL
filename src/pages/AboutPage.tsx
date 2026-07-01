@@ -41,11 +41,11 @@ export default function AboutPage() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-neutral-50 rounded-2xl p-6 text-center border border-neutral-100">
-                <div className="text-3xl font-bold text-emerald-700 mb-2">500+</div>
+                <div className="text-3xl font-bold text-emerald-700 mb-2">10+</div>
                 <p className="text-sm text-neutral-500 font-medium">Happy Clients</p>
               </div>
               <div className="bg-neutral-50 rounded-2xl p-6 text-center border border-neutral-100">
-                <div className="text-3xl font-bold text-emerald-700 mb-2">10M+</div>
+                <div className="text-3xl font-bold text-emerald-700 mb-2">1K+</div>
                 <p className="text-sm text-neutral-500 font-medium">Containers Delivered</p>
               </div>
               <div className="bg-neutral-50 rounded-2xl p-6 text-center border border-neutral-100">
