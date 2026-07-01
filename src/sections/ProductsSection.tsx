@@ -166,11 +166,11 @@ Please provide pricing and availability. Thank you!`;
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-neutral-900">
-            Precision Containers
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-neutral-900">
+            Premium Food Containers Manufacturer in Kanniyakumari
+          </h1>
           <p className="text-xl text-neutral-600 font-light leading-relaxed">
-            Engineered for durability and clarity. Choose from our standard range, available in multiple colors to match your brand identity.
+            Engineered for durability and clarity at our facility in Karankadu, Kanniyakumari. Choose from our standard range, available in multiple colors to match your brand identity.
           </p>
         </div>
 
@@ -210,7 +210,7 @@ Please provide pricing and availability. Thank you!`;
                   <motion.img
                     key={`${product.id}-${activeColor.id}`}
                     src={product.images[activeColor.id as keyof typeof product.images]}
-                    alt={`${product.name} - ${activeColor.name}`}
+                    alt={`${product.name} - ${activeColor.name} Premium Food Container manufactured in Karankadu, Kanniyakumari by AXAL Packing`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

@@ -1,12 +1,28 @@
+import SEO from '../components/layout/SEO';
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About AXAL Packing",
+  "description": "Learn about AXAL's story, our manufacturing values, state-of-the-art facility in Karankadu, Kanniyakumari, and our founder's vision for premier food container manufacturing in Tamil Nadu."
+};
+
 export default function AboutPage() {
   return (
     <div className="pt-20">
+      <SEO 
+        title="About Our Manufacturing Base in Kanniyakumari"
+        description="Learn about AXAL Packing's mission, our state-of-the-art injection molding facilities in Karankadu, Kanniyakumari, Tamil Nadu, and our commitment to producing 100% food-grade plastic containers."
+        keywords="food packaging manufacturer Kanniyakumari, AXAL founder, injection molding facility Karankadu, about AXAL packing, food safe packaging solutions Kanyakumari"
+        path="/about"
+        schema={aboutPageSchema}
+      />
       {/* Hero Banner */}
       <section className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">About AXAL</h1>
           <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-            Pioneering precision packaging solutions for the food &amp; beverage industry across India.
+            Pioneering precision packaging solutions for the food &amp; beverage industry in Karankadu, Kanniyakumari, Tamil Nadu.
           </p>
         </div>
       </section>
@@ -18,13 +34,13 @@ export default function AboutPage() {
             <div>
               <span className="text-sm font-semibold text-emerald-700 uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-6">
-                Building India's Trusted Packaging Brand
+                Building Kanniyakumari's Trusted Packaging Brand
               </h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
                 AXAL was founded with a singular vision — to deliver world-class, food-safe packaging solutions 
-                that meet the highest standards of quality, durability, and design. Based in India, we specialize 
+                that meet the highest standards of quality, durability, and design. Based in Karankadu, Kanniyakumari, Tamil Nadu, we specialize 
                 in manufacturing premium thin-wall containers that serve restaurants, cloud kitchens, catering 
-                businesses, and food delivery platforms across the country.
+                businesses, and food delivery platforms across the region and country.
               </p>
               <p className="text-neutral-600 leading-relaxed mb-4">
                 Our state-of-the-art manufacturing facility employs advanced injection molding technology to produce 
@@ -71,7 +87,7 @@ export default function AboutPage() {
                 <div className="w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
                   <img 
                     src="/images/founder.webp" 
-                    alt="Founder of AXAL" 
+                    alt="Founder of AXAL Packing container manufacturing plant in Karankadu, Kanniyakumari, Tamil Nadu" 
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />

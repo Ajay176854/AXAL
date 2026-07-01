@@ -1,6 +1,22 @@
+import SEO from '../components/layout/SEO';
+
+const capabilitiesPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AXAL Packing Manufacturing Capabilities in Kanniyakumari",
+  "description": "Discover AXAL's production capabilities in Kanniyakumari, Tamil Nadu, including thin-wall injection molding, precision tooling, microwave/freezer safety, and food-grade compliance."
+};
+
 export default function CapabilitiesPage() {
   return (
     <div className="pt-20">
+      <SEO 
+        title="Manufacturing & Design Capabilities in Tamil Nadu"
+        description="Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options."
+        keywords="thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari"
+        path="/capabilities"
+        schema={capabilitiesPageSchema}
+      />
       {/* Hero Banner */}
       <section className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -39,7 +55,7 @@ export default function CapabilitiesPage() {
             <div className="rounded-2xl overflow-hidden shadow-lg border border-neutral-100">
               <img 
                 src="/images/capability_thinwall.webp" 
-                alt="Thin-wall injection molding production" 
+                alt="Thin-wall injection molding production line at AXAL Packing factory in Karankadu, Kanniyakumari, Tamil Nadu" 
                 className="w-full h-auto object-cover"
                 loading="lazy"
               />

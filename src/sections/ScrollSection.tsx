@@ -106,14 +106,17 @@ function ScrollSection({
                 </span>
               </div>
 
-              {/* Actual frame canvas (hidden until frames exist) */}
               <canvas
                 ref={canvasRef}
                 className="scroll-section__frame-canvas"
+                role="img"
+                aria-label={`Interactive 3D frame animation showing AXAL ${chapter.label} food container durability, stackability, and seal compatibility.`}
                 style={{
                   display: currentImage ? 'block' : 'none',
                 }}
-              />
+              >
+                Interactive 3D frame animation of {chapter.label} food container.
+              </canvas>
             </div>
           </div>
 
