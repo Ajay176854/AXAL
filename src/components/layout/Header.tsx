@@ -1,10 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +37,7 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center h-16">
+          <Link href="/" className="flex items-center h-16">
             <img 
               src="/logo-v2.png" 
               alt="AXAL Logo" 
@@ -47,17 +50,17 @@ export default function Header() {
           <nav className={`hidden md:flex gap-8 text-sm font-medium transition-colors duration-300 ${
             isSolid ? 'text-neutral-600' : 'text-white/80'
           }`}>
-            <Link to="/products" className={`transition-colors ${
+            <Link href="/products" className={`transition-colors ${
               isSolid ? 'hover:text-neutral-900' : 'hover:text-white'
             }`}>
               Products
             </Link>
-            <Link to="/capabilities" className={`transition-colors ${
+            <Link href="/capabilities" className={`transition-colors ${
               isSolid ? 'hover:text-neutral-900' : 'hover:text-white'
             }`}>
               Capabilities
             </Link>
-            <Link to="/about" className={`transition-colors ${
+            <Link href="/about" className={`transition-colors ${
               isSolid ? 'hover:text-neutral-900' : 'hover:text-white'
             }`}>
               About Us

@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useEffect, useRef, memo } from 'react';
 import { cn } from '../lib/utils';
 import { useFrameAnimation } from '../hooks/useFrameAnimation';

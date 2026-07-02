@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="bg-neutral-950 text-neutral-400 py-12 border-t border-neutral-900">
@@ -6,13 +8,13 @@ export default function Footer() {
           
           {/* Brand */}
           <div>
-            <a href="/" className="flex items-center h-20 mb-4">
+            <Link href="/" className="flex items-center h-20 mb-4">
               <img 
                 src="/logo-v2.png" 
                 alt="AXAL Logo" 
                 className="h-full w-auto object-contain"
               />
-            </a>
+            </Link>
             <p className="text-sm leading-relaxed">
               Precision-engineered packaging solutions for the food &amp; beverage industry.
             </p>
@@ -22,9 +24,9 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/products" className="hover:text-white transition-colors">Products</a></li>
-              <li><a href="/capabilities" className="hover:text-white transition-colors">Capabilities</a></li>
-              <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><Link href="/products" className="hover:text-white transition-colors">Products</Link></li>
+              <li><Link href="/capabilities" className="hover:text-white transition-colors">Capabilities</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><a href="https://wa.me/918300149040" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>

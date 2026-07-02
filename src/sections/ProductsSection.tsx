@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
@@ -170,7 +172,7 @@ Please provide pricing and availability. Thank you!`;
             Premium Food Containers Manufacturer in Kanniyakumari
           </h1>
           <p className="text-xl text-neutral-600 font-light leading-relaxed">
-            Engineered for durability and clarity at our facility in Karankadu, Kanniyakumari. Choose from our standard range, available in multiple colors to match your brand identity.
+            Engineered for durability and clarity at our facility in Karankadu, Kanniyakumari. Choose from our standard range, available in multiple colors, or request customized color options as per your wish.
           </p>
         </div>
 
@@ -195,6 +197,11 @@ Please provide pricing and availability. Thank you!`;
             ))}
           </div>
           <p className="mt-4 text-neutral-700 font-medium">{activeColor.name}</p>
+          
+          <div className="mt-4 flex items-center gap-2 text-xs md:text-sm text-neutral-500 bg-neutral-100/80 px-4 py-1.5 rounded-full border border-neutral-200/50">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+            <span>Customized color options are also available as per the customer's wish</span>
+          </div>
         </div>
 
         {/* Product Grid */}

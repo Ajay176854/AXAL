@@ -1,4 +1,31 @@
-import SEO from '../components/layout/SEO';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
+  description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
+  keywords: 'thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari',
+  alternates: {
+    canonical: 'https://axalpacking.com/capabilities',
+  },
+  openGraph: {
+    title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
+    description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
+    url: 'https://axalpacking.com/capabilities',
+    type: 'website',
+    images: [
+      {
+        url: 'https://axalpacking.com/logo-v2.png',
+        alt: 'AXAL Packing Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
+    description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
+    images: ['https://axalpacking.com/logo-v2.png'],
+  },
+};
 
 const capabilitiesPageSchema = {
   "@context": "https://schema.org",
@@ -10,12 +37,9 @@ const capabilitiesPageSchema = {
 export default function CapabilitiesPage() {
   return (
     <div className="pt-20">
-      <SEO 
-        title="Manufacturing & Design Capabilities in Tamil Nadu"
-        description="Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options."
-        keywords="thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari"
-        path="/capabilities"
-        schema={capabilitiesPageSchema}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(capabilitiesPageSchema) }}
       />
       {/* Hero Banner */}
       <section className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white py-20">

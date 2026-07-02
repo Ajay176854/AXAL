@@ -1,8 +1,10 @@
+'use client';
+
 import Button from '../components/ui/Button';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export default function HeroSection() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <section className="bg-neutral-950 text-white pt-32 pb-40 relative overflow-hidden flex items-center min-h-screen">
@@ -37,7 +39,7 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <Button variant="primary" showArrow onClick={() => navigate('/products')}>
+            <Button variant="primary" showArrow onClick={() => router.push('/products')}>
               Explore Catalog
             </Button>
           </div>
