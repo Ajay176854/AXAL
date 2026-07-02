@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Our Manufacturing Base in Kanniyakumari | AXAL Packing',
   description: "Learn about AXAL Packing's mission, our state-of-the-art injection molding facilities in Karankadu, Kanniyakumari, Tamil Nadu, and our commitment to producing 100% food-grade plastic containers.",
-  keywords: 'food packaging manufacturer Kanniyakumari, AXAL founder, injection molding facility Karankadu, about AXAL packing, food safe packaging solutions Kanyakumari',
+  keywords: 'axalpack, axal packing, food packaging manufacturer Kanniyakumari, AXAL founder, injection molding facility Karankadu, about AXAL packing, food safe packaging solutions Kanyakumari',
   alternates: {
     canonical: 'https://axalpacking.com/about',
   },

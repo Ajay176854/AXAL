@@ -4,7 +4,7 @@ import HomePage from '../components/pages/HomePage';
 export const metadata: Metadata = {
   title: 'Premium Food Containers Manufacturer in Kanniyakumari | AXAL Packing',
   description: 'AXAL Packing is the leading premium thin-wall food containers manufacturer in Karankadu, Kanniyakumari, Tamil Nadu. Food-safe, microwave-safe, and freezer-compatible packaging solutions.',
-  keywords: 'food containers Kanniyakumari, plastic packaging Kanyakumari, thin-wall food containers manufacturer Kanniyakumari, food packaging Karankadu, AXAL packing',
+  keywords: 'axalpack, axal packing, food containers Kanniyakumari, plastic packaging Kanyakumari, thin-wall food containers manufacturer Kanniyakumari, food packaging Karankadu',
   alternates: {
     canonical: 'https://axalpacking.com/',
   },

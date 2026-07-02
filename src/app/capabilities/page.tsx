@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
   description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
-  keywords: 'thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari',
+  keywords: 'axalpack, axal packing, thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari',
   alternates: {
     canonical: 'https://axalpacking.com/capabilities',
   },
