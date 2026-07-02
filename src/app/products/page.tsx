@@ -6,16 +6,16 @@ export const metadata: Metadata = {
   description: 'Explore our range of round containers, rectangular containers, and juice container glasses in Karankadu, Kanniyakumari, Tamil Nadu. 100% food-safe and leak-proof.',
   keywords: 'axalpack, axal packing, plastic food containers Kanniyakumari, round containers Kanyakumari, wholesale plastic containers Tamil Nadu, juice glasses Karankadu',
   alternates: {
-    canonical: 'https://axalpacking.com/products',
+    canonical: 'https://axalpack.in/products',
   },
   openGraph: {
     title: 'Premium Food Containers Catalog | AXAL Packing',
     description: 'Explore our range of round containers, rectangular containers, and juice container glasses in Karankadu, Kanniyakumari, Tamil Nadu. 100% food-safe and leak-proof.',
-    url: 'https://axalpacking.com/products',
+    url: 'https://axalpack.in/products',
     type: 'website',
     images: [
       {
-        url: 'https://axalpacking.com/logo-v2.png',
+        url: 'https://axalpack.in/logo-v2.png',
         alt: 'AXAL Packing Logo',
       },
     ],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Premium Food Containers Catalog | AXAL Packing',
     description: 'Explore our range of round containers, rectangular containers, and juice container glasses in Karankadu, Kanniyakumari, Tamil Nadu. 100% food-safe and leak-proof.',
-    images: ['https://axalpacking.com/logo-v2.png'],
+    images: ['https://axalpack.in/logo-v2.png'],
   },
 };
 

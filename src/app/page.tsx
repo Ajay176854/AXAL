@@ -6,16 +6,16 @@ export const metadata: Metadata = {
   description: 'AXAL Packing is the leading premium thin-wall food containers manufacturer in Karankadu, Kanniyakumari, Tamil Nadu. Food-safe, microwave-safe, and freezer-compatible packaging solutions.',
   keywords: 'axalpack, axal packing, food containers Kanniyakumari, plastic packaging Kanyakumari, thin-wall food containers manufacturer Kanniyakumari, food packaging Karankadu',
   alternates: {
-    canonical: 'https://axalpacking.com/',
+    canonical: 'https://axalpack.in/',
   },
   openGraph: {
     title: 'Premium Food Containers Manufacturer in Kanniyakumari | AXAL Packing',
     description: 'AXAL Packing is the leading premium thin-wall food containers manufacturer in Karankadu, Kanniyakumari, Tamil Nadu. Food-safe, microwave-safe, and freezer-compatible packaging solutions.',
-    url: 'https://axalpacking.com/',
+    url: 'https://axalpack.in/',
     type: 'website',
     images: [
       {
-        url: 'https://axalpacking.com/logo-v2.png',
+        url: 'https://axalpack.in/logo-v2.png',
         alt: 'AXAL Packing Logo',
       },
     ],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Premium Food Containers Manufacturer in Kanniyakumari | AXAL Packing',
     description: 'AXAL Packing is the leading premium thin-wall food containers manufacturer in Karankadu, Kanniyakumari, Tamil Nadu. Food-safe, microwave-safe, and freezer-compatible packaging solutions.',
-    images: ['https://axalpacking.com/logo-v2.png'],
+    images: ['https://axalpack.in/logo-v2.png'],
   },
 };
 
@@ -32,8 +32,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "AXAL Packing",
-  "url": "https://axalpacking.com/",
-  "logo": "https://axalpacking.com/logo-v2.png",
+  "url": "https://axalpack.in/",
+  "logo": "https://axalpack.in/logo-v2.png",
   "description": "AXAL Packing is the leading premium thin-wall food containers manufacturer in Karankadu, Kanniyakumari, Tamil Nadu. Delivering food-safe, microwave-safe, and freezer-compatible packaging solutions.",
   "address": {
     "@type": "PostalAddress",

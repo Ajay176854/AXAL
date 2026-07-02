@@ -4,7 +4,7 @@ import Footer from '../components/layout/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://axalpacking.com'),
+  metadataBase: new URL('https://axalpack.in'),
   icons: {
     icon: '/logo-v2.png',
     shortcut: '/logo-v2.png',

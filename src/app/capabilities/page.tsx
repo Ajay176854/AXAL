@@ -5,16 +5,16 @@ export const metadata: Metadata = {
   description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
   keywords: 'axalpack, axal packing, thin-wall injection molding Kanniyakumari, food-grade plastic standards Kanyakumari, microwave safe containers Tamil Nadu, packaging factory Kanniyakumari',
   alternates: {
-    canonical: 'https://axalpacking.com/capabilities',
+    canonical: 'https://axalpack.in/capabilities',
   },
   openGraph: {
     title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
     description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
-    url: 'https://axalpacking.com/capabilities',
+    url: 'https://axalpack.in/capabilities',
     type: 'website',
     images: [
       {
-        url: 'https://axalpacking.com/logo-v2.png',
+        url: 'https://axalpack.in/logo-v2.png',
         alt: 'AXAL Packing Logo',
       },
     ],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Manufacturing & Design Capabilities in Tamil Nadu | AXAL Packing',
     description: 'Discover our technical capabilities based in Kanniyakumari, Tamil Nadu: thin-wall injection molding down to 0.4mm, food safety (FSSAI), and custom options.',
-    images: ['https://axalpacking.com/logo-v2.png'],
+    images: ['https://axalpack.in/logo-v2.png'],
   },
 };
 

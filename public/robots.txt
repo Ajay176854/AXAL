@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axalpacking.com/sitemap.xml
+Sitemap: https://axalpack.in/sitemap.xml
