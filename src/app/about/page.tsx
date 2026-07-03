@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -58,23 +59,16 @@ export default function AboutPage() {
             <div>
               <span className="text-sm font-semibold text-emerald-700 uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-6">
-                Building Kanniyakumari's Trusted Packaging Brand
+                From a Simple Family Need to Kanyakumari's Trusted Partner
               </h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                AXAL was founded with a singular vision — to deliver world-class, food-safe packaging solutions 
-                that meet the highest standards of quality, durability, and design. Based in Karankadu, Kanniyakumari, Tamil Nadu, we specialize 
-                in manufacturing premium thin-wall containers that serve restaurants, cloud kitchens, catering 
-                businesses, and food delivery platforms across the region and country.
+                AXAL didn't start in a sterile corporate boardroom. It began around our own family dinner table. Like many of you, we loved ordering food from our favorite local spots in Kanyakumari, but we grew tired of the constant frustrations: containers that cracked on the way, lids that leaked oil, and food that arrived lukewarm and soggy.
               </p>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                Our state-of-the-art manufacturing facility employs advanced injection molding technology to produce 
-                containers that are lightweight yet incredibly strong. Every product undergoes rigorous quality 
-                checks to ensure food-grade compliance and consistent performance.
+                We saw local restaurant owners pouring their heart, soul, and hard work into crafting delicious recipes, only for the entire dining experience to be ruined on the delivery ride. We realized that packaging is the silent bridge between a chef's kitchen and a customer's home—and that bridge was broken.
               </p>
               <p className="text-neutral-600 leading-relaxed">
-                At AXAL, we believe that great packaging isn't just about containment — it's about preserving 
-                freshness, enhancing presentation, and building trust between food businesses and their customers. 
-                That's why we engineer every container to be leak-proof, microwave-safe, and freezer-compatible.
+                So, we decided to build that bridge ourselves. Right here in Karankadu, we set up a manufacturing base dedicated to producing premium, thin-wall food containers. We combine state-of-the-art precision injection molding with 100% food-safe virgin materials. We wanted to build something we would proudly use at home—leak-proof, microwave-safe, freezer-friendly packaging that local food businesses can rely on blindly.
               </p>
             </div>
 
@@ -102,16 +96,16 @@ export default function AboutPage() {
       </section>
 
       {/* Founder Section */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-20 bg-neutral-50 border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Founder Image */}
             <div className="flex justify-center lg:justify-start">
               <div className="relative">
-                <div className="w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                <div className="w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-neutral-200">
                   <img 
                     src="/images/founder.webp" 
-                    alt="Founder of AXAL Packing container manufacturing plant in Karankadu, Kanniyakumari, Tamil Nadu" 
+                    alt="Founder & CEO of AXAL Packing in Karankadu, Kanyakumari" 
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
@@ -125,27 +119,58 @@ export default function AboutPage() {
             <div>
               <span className="text-sm font-semibold text-emerald-700 uppercase tracking-wider">Meet Our Founder</span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-6">
-                A Vision for Excellence
+                Protecting Every Meal We Deliver
               </h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                AXAL was born from the belief that Indian food businesses deserve packaging that matches the quality 
-                of their food. Our founder recognized a gap in the market — while the food industry was evolving 
-                rapidly with cloud kitchens and delivery platforms, the packaging hadn't kept pace.
+                "When I look at a local cloud kitchen or a family-run restaurant, I see dreams and hard work. As a business owner myself, I know the immense pride that goes into sending a product out. But I also know the anxiety of wondering if it will arrive in perfect condition.
               </p>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                Driven by a passion for precision engineering and a commitment to sustainability, he built AXAL 
-                from the ground up — investing in cutting-edge thin-wall injection molding technology and 
-                assembling a team of quality-obsessed professionals.
+                I founded AXAL to take that anxiety away. I wanted to build containers that act as a secure vault for your food, preserving the temperature, taste, and presentation. By setting up our plant in Karankadu, we're not just creating products; we're supporting the local food community and ensuring food safety is never compromised."
               </p>
-              <p className="text-neutral-600 leading-relaxed mb-6">
-                Today, AXAL serves hundreds of clients across India, from local restaurants to large-scale 
-                catering operations, delivering containers that are trusted for their durability, clarity, 
-                and food-safe integrity.
+              <div className="mt-8 flex items-center gap-4">
+                <div className="h-px w-12 bg-emerald-700" />
+                <span className="text-sm font-semibold text-neutral-800">Founder &amp; CEO, AXAL Packing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Director Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Director Info (Left for alternate layout) */}
+            <div className="order-2 lg:order-1">
+              <span className="text-sm font-semibold text-emerald-700 uppercase tracking-wider">Meet Our Director</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-6">
+                Where Engineering Meets Food Safety
+              </h2>
+              <p className="text-neutral-600 leading-relaxed mb-4">
+                "Having a vision is just the first step; bringing it to life on the factory floor is where my heart lies. At AXAL, we don't just run production lines. We curate a meticulous culture of safety and precision.
               </p>
-              <div className="flex items-center gap-4">
-                <div className="h-px flex-1 bg-neutral-200" />
-                <span className="text-sm text-neutral-400 italic">Founder &amp; CEO, AXAL Packing</span>
-                <div className="h-px flex-1 bg-neutral-200" />
+              <p className="text-neutral-600 leading-relaxed mb-4">
+                We know that families rely on our containers to heat food for their kids. That is why every batch of virgin PP polymer we use is thoroughly vetted. We fine-tune our state-of-the-art injection molding machines to achieve millimeter-perfect seals, lightweight durability, and flawless finishes. When a container leaves our Karankadu plant, I know it is ready to perform under pressure."
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="h-px w-12 bg-emerald-700" />
+                <span className="text-sm font-semibold text-neutral-800">Director, AXAL Packing</span>
+              </div>
+            </div>
+
+            {/* Director Image (Right for alternate layout) */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative">
+                <div className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl border-4 border-white bg-neutral-200">
+                  <img 
+                    src="/images/director_axal.jpeg" 
+                    alt="Director of AXAL Packing container manufacturing plant in Karankadu, Kanyakumari" 
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                {/* Decorative accent ring */}
+                <div className="absolute -bottom-3 -left-3 w-72 h-72 md:w-80 md:h-80 rounded-full border-2 border-emerald-700/20 -z-10" />
               </div>
             </div>
           </div>

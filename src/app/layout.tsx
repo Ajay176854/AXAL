@@ -5,11 +5,6 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://axalpack.in'),
-  icons: {
-    icon: '/logo-v2.png',
-    shortcut: '/logo-v2.png',
-    apple: '/logo-v2.png',
-  },
 };
 
 export default function RootLayout({
