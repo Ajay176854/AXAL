@@ -42,23 +42,17 @@ def generate_icons():
     cropped = im_rgba.crop(bbox)
     cw, ch = cropped.size
 
-    # Create a 512x512 transparent canvas with a clean solid white circle background
-    from PIL import ImageDraw
+    # Create a 512x512 solid white background canvas (no transparency)
     badge_size = 512
-    square_img = Image.new('RGBA', (badge_size, badge_size), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(square_img)
+    square_img = Image.new('RGBA', (badge_size, badge_size), (255, 255, 255, 255))
 
-    # Draw a solid white circle (leaves a small margin around the edge)
-    margin = 16
-    draw.ellipse((margin, margin, badge_size - margin, badge_size - margin), fill=(255, 255, 255, 255))
-
-    # Scale the logo to fit nicely in the center of the circle
-    # Target width of 360px to leave clean margins
-    target_w = 360
+    # Scale the logo to fit nicely in the center of the canvas
+    # Target width of 400px to leave clean margins
+    target_w = 400
     target_h = int(ch * (target_w / cw))
     resized_logo = cropped.resize((target_w, target_h), Image.Resampling.LANCZOS)
 
-    # Center the scaled logo inside the circle
+    # Center the scaled logo inside the white canvas
     offset_x = (badge_size - target_w) // 2
     offset_y = (badge_size - target_h) // 2
     square_img.paste(resized_logo, (offset_x, offset_y), resized_logo)
