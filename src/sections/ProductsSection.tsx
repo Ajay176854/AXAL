@@ -141,8 +141,8 @@ const products: ProductItem[] = [
     longDesc: "AXAL's 350 ml Juice Glass combines the lightweight convenience of plastic with the high clarity of glass. Perfect for milkshakes, fresh juices, and iced coffees. The secure snap-lock lid makes it ideal for deliveries.",
   },
   {
-    id: '500ml-juice-glass',
-    name: '500 ml Juice Glass',
+    id: '400ml-juice-glass',
+    name: '400 ml Juice Glass',
     description: 'Medium-sized transparent cup with leak-proof lid.',
     images: {
       clear: '/images/products/container_juice_glass.webp',
@@ -152,35 +152,14 @@ const products: ProductItem[] = [
       red: '/images/products/container_juice_glass_red.webp',
     },
     specs: {
-      volume: '500 ml',
-      dimensions: 'Ø 95 mm x 135 mm',
+      volume: '400 ml',
+      dimensions: 'Ø 95 mm x 115 mm',
       cartonQty: '1000 Pcs / Carton',
       material: 'Food-Grade Polypropylene (PP)',
       tempRange: '-10°C to +110°C',
     },
     features: ['Leak-proof Snap Lid', 'High Clarity Glass Look', 'Comfortable Grip', 'Recyclable PP'],
-    longDesc: "AXAL's 500 ml Juice Glass is perfect for bubble teas, large milkshakes, smoothies, and floats. Offers great visibility for layered beverages while ensuring a completely spill-free transport.",
-  },
-  {
-    id: '750ml-juice-glass',
-    name: '750 ml Juice Glass',
-    description: 'Large capacity transparent cup with leak-proof lid.',
-    images: {
-      clear: '/images/products/container_juice_glass.webp',
-      black: '/images/products/container_juice_glass_black.webp',
-      blue: '/images/products/container_juice_glass_blue.webp',
-      green: '/images/products/container_juice_glass_green.webp',
-      red: '/images/products/container_juice_glass_red.webp',
-    },
-    specs: {
-      volume: '750 ml',
-      dimensions: 'Ø 95 mm x 165 mm',
-      cartonQty: '500 Pcs / Carton',
-      material: 'Food-Grade Polypropylene (PP)',
-      tempRange: '-10°C to +110°C',
-    },
-    features: ['Leak-proof Snap Lid', 'High Clarity Glass Look', 'Comfortable Grip', 'Recyclable PP'],
-    longDesc: "AXAL's 750 ml Juice Glass is engineered for extra-large cold beverages, boba teas, and milkshakes. Offers superior wall thickness and a rigid base to maintain form and prevent spills in transit.",
+    longDesc: "AXAL's 400 ml Juice Glass is perfect for bubble teas, large milkshakes, smoothies, and floats. Offers great visibility for layered beverages while ensuring a completely spill-free transport.",
   },
 ];
 

@@ -35,7 +35,7 @@ export const products: Product[] = [
     name: 'JUICE GLASS',
     subtitle: '(TRANSPARENT GLASS & BLACK LID, TRANSPARENT LID & GLASS)',
     colors: ['Transparent Glass & Black Lid', 'Transparent Lid & Glass'],
-    sizes: ['350 ml', '500 ml', '750 ml'],
+    sizes: ['350 ml', '400 ml'],
     icon: 'CupSoda',
     sizesLayout: 'single',
   },

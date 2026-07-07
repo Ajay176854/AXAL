@@ -47,8 +47,8 @@ export const chapters: Chapter[] = [
         title: 'Three blends, one table',
         body: 'Mango-passion, green-detox, and berry-citrus arranged on a terrazzo surface, shot head-on to emphasise the sealed lid geometry.',
         tags: [
-          { label: '300 ml', color: 'orange' },
-          { label: '350 ml', color: 'green' },
+          { label: '350 ml', color: 'orange' },
+          { label: '400 ml', color: 'green' },
           { label: 'Transparent', color: 'clear' },
         ],
       },
