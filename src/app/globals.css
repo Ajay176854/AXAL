@@ -458,6 +458,158 @@ body {
 }
 
 /* ──────────────────────────────────────────────
+   Header CTA Button
+   ────────────────────────────────────────────── */
+.header-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 50px;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+}
+
+/* Glow layer behind the button */
+.header-cta__glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-accent), #d4a574, var(--color-charcoal), var(--color-accent));
+  background-size: 300% 300%;
+  animation: cta-glow-shift 4s ease infinite;
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.header-cta:hover .header-cta__glow {
+  opacity: 1;
+}
+
+/* Content layer */
+.header-cta__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+/* Solid variant (scrolled / inner pages) */
+.header-cta[data-solid="true"] .header-cta__content {
+  background: var(--color-charcoal);
+  color: #ffffff;
+}
+
+.header-cta[data-solid="true"]:hover .header-cta__content {
+  background: #222222;
+}
+
+/* Transparent variant (hero) */
+.header-cta[data-solid="false"] .header-cta__content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.header-cta[data-solid="false"]:hover .header-cta__content {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Arrow icon */
+.header-cta__arrow {
+  opacity: 0;
+  width: 0;
+  transform: translateX(-6px);
+  transition: all 0.3s var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+.header-cta:hover .header-cta__arrow {
+  opacity: 1;
+  width: 14px;
+  transform: translateX(0);
+}
+
+/* Hover lift */
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 169, 126, 0.25);
+}
+
+.header-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes cta-glow-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ──────────────────────────────────────────────
+   WhatsApp FAB
+   ────────────────────────────────────────────── */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff;
+  box-shadow:
+    0 4px 14px rgba(37, 211, 102, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+  animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 6px 20px rgba(37, 211, 102, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: none;
+}
+
+.whatsapp-fab:active {
+  transform: scale(0.95);
+}
+
+@keyframes whatsapp-pulse {
+  0%, 100% {
+    box-shadow:
+      0 4px 14px rgba(37, 211, 102, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 0 0 0 rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 4px 14px rgba(37, 211, 102, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+
+/* ──────────────────────────────────────────────
    Responsive
    ────────────────────────────────────────────── */
 @media (max-width: 1024px) {

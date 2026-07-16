@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import WhatsAppButton from '../components/ui/WhatsAppButton';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

@@ -1,10 +1,30 @@
 'use client';
 
 import Button from '../components/ui/Button';
-import { useRouter } from 'next/navigation';
 
 export default function HeroSection() {
-  const router = useRouter();
+  const handleScroll = () => {
+    const target = document.querySelector('.chapter-header');
+    if (!target) return;
+
+    const targetY = target.getBoundingClientRect().top + window.scrollY;
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const duration = 1000;
+    let startTime: number | null = null;
+
+    const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + distance * easeOutExpo(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
 
   return (
     <section className="bg-neutral-950 text-white pt-32 pb-40 relative overflow-hidden flex items-center min-h-screen">
@@ -39,8 +59,8 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <Button variant="primary" showArrow onClick={() => router.push('/products')}>
-              Explore Catalog
+            <Button variant="primary" showArrow onClick={handleScroll}>
+              See It In Action
             </Button>
           </div>
         </div>
