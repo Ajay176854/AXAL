@@ -43,9 +43,7 @@ export function useScrollProgress(sectionCount: number) {
 
   const subscribeToPage = useCallback((cb: ScrollSubscriber) => {
     pageSubscribers.current.add(cb);
-    return () => {
-      pageSubscribers.current.delete(cb);
-    };
+    return () => pageSubscribers.current.delete(cb);
   }, []);
 
   const subscribeToSection = useCallback((index: number, cb: SectionSubscriber) => {
@@ -53,9 +51,7 @@ export function useScrollProgress(sectionCount: number) {
       sectionSubscribers.current.set(index, new Set());
     }
     sectionSubscribers.current.get(index)!.add(cb);
-    return () => {
-      sectionSubscribers.current.get(index)!.delete(cb);
-    };
+    return () => sectionSubscribers.current.get(index)!.delete(cb);
   }, []);
 
   useEffect(() => {

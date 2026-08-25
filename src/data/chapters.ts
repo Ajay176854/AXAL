@@ -39,8 +39,8 @@ export const chapters: Chapter[] = [
     canvasBg: '#f0ede8',
     textBg: '#faf8f5',
     framePrefix: '/frames/juice/frame-',
-    frameCount: 30,
-    frameExt: 'webp',
+    frameCount: 60,
+    frameExt: 'jpg',
     panels: [
       {
         num: 'The Lineup',
@@ -93,8 +93,8 @@ export const chapters: Chapter[] = [
     canvasBg: '#1a1a1a',
     textBg: '#111111',
     framePrefix: '/frames/round/frame-',
-    frameCount: 30,
-    frameExt: 'webp',
+    frameCount: 60,
+    frameExt: 'jpg',
     panels: [
       {
         num: 'Range Overview',
@@ -146,8 +146,8 @@ export const chapters: Chapter[] = [
     canvasBg: '#f0ede8',
     textBg: '#faf8f5',
     framePrefix: '/frames/rect/frame-',
-    frameCount: 30,
-    frameExt: 'webp',
+    frameCount: 60,
+    frameExt: 'jpg',
     panels: [
       {
         num: 'Line-Up',

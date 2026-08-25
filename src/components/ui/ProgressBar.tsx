@@ -2,18 +2,21 @@ import { useEffect, useRef } from 'react';
 import type { ScrollSubscriber } from '../../hooks/useScrollProgress';
 
 interface ProgressBarProps {
-  subscribeToPage: (cb: ScrollSubscriber) => () => void;
+  subscribeToPage: (cb: ScrollSubscriber) => () => boolean;
 }
 
 export default function ProgressBar({ subscribeToPage }: ProgressBarProps) {
   const fillRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    return subscribeToPage((progress) => {
+    const unsubscribe = subscribeToPage((progress) => {
       if (fillRef.current) {
         fillRef.current.style.width = `${Math.min(100, Math.max(0, progress * 100))}%`;
       }
     });
+    return () => {
+      unsubscribe();
+    };
   }, [subscribeToPage]);
 
   return (

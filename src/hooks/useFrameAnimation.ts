@@ -54,34 +54,33 @@ export function useFrameAnimation(
       // Load current frame immediately
       loadPriority(currentIndex);
 
-      // Load nearby frames in a chunk
-      for (let i = 1; i <= 3; i++) {
+      // Lookahead window: load the next 15 frames ahead, and 5 frames behind
+      // This prevents dumping 60 image requests into the network queue at once.
+      for (let i = 1; i <= 15; i++) {
         loadPriority(currentIndex + i);
-        loadPriority(currentIndex - i);
       }
-
-      // Schedule remaining frames idly
-      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-        window.requestIdleCallback(() => {
-          for (let i = 0; i < frameCount; i++) {
-            if (i < currentIndex - 3 || i > currentIndex + 3) {
-              loadPriority(i);
-            }
-          }
-        });
-      } else {
-        // Fallback for browsers without requestIdleCallback
-        setTimeout(() => {
-          for (let i = 0; i < frameCount; i++) {
-            if (i < currentIndex - 3 || i > currentIndex + 3) {
-              loadPriority(i);
-            }
-          }
-        }, 50);
+      for (let i = 1; i <= 5; i++) {
+        loadPriority(currentIndex - i);
       }
     },
     [frameCount, frameUrls],
   );
+
+  // Preload the first few frames on mount to ensure smooth start
+  useEffect(() => {
+    if (imagesRef.current.length === 0) return;
+    
+    // Load first 10 frames aggressively on mount
+    for (let i = 0; i < 10 && i < frameCount; i++) {
+      const img = imagesRef.current[i];
+      if (img && !img.src) {
+        img.src = frameUrls[i];
+        if (typeof img.decode === 'function') {
+          img.decode().catch(() => {});
+        }
+      }
+    }
+  }, [frameCount, frameUrls]);
 
   return { imagesRef, loadFramesForProgress };
 }
