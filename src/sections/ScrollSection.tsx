@@ -71,6 +71,15 @@ function ScrollSection({
             chapter.sectionReverse && 'scroll-section__grid--reverse',
           )}
         >
+          {/* Text backdrop gradient — provides contrast for text over images */}
+          <div
+            className="scroll-section__text-backdrop"
+            style={{
+              background: chapter.sectionReverse
+                ? `linear-gradient(to right, ${chapter.textBg}ee 0%, ${chapter.textBg}cc 35%, ${chapter.textBg}00 100%)`
+                : `linear-gradient(to left, ${chapter.textBg}ee 0%, ${chapter.textBg}cc 35%, ${chapter.textBg}00 100%)`,
+            }}
+          />
           {/* Canvas side — frame animation */}
           <div
             className="scroll-section__canvas"
