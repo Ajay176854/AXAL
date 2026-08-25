@@ -12,14 +12,14 @@ import { chapters } from '../../data/chapters';
 const navSections = chapters.map((c) => ({ id: c.id, label: c.label }));
 
 export default function HomePage() {
-  const { pageProgress, activeSection, sectionProgress, registerSection } =
+  const { activeSection, registerSection, subscribeToPage, subscribeToSection } =
     useScrollProgress(chapters.length);
 
   return (
     <>
       <HeroSection />
       
-      <ProgressBar progress={pageProgress} />
+      <ProgressBar subscribeToPage={subscribeToPage} />
       <NavDots sections={navSections} activeIndex={activeSection} />
 
       {chapters.map((chapter, i) => (
@@ -33,9 +33,9 @@ export default function HomePage() {
           />
           <ScrollSection
             chapter={chapter}
-            progress={sectionProgress[i] ?? 0}
             index={i}
             registerSection={registerSection}
+            subscribeToSection={subscribeToSection}
           />
         </div>
       ))}

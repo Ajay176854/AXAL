@@ -19,9 +19,6 @@
 /* ──────────────────────────────────────────────
    Base reset additions
    ────────────────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   font-family: var(--font-sans);
@@ -209,6 +206,7 @@ body {
   top: 0;
   height: 100vh;
   overflow: hidden;
+  contain: layout style paint; /* Hardware acceleration / composite isolation */
 }
 
 .scroll-section__grid {
@@ -252,6 +250,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: 2;
+  will-change: transform, opacity;
 }
 
 /* Placeholder (shown when no frame images exist) */
@@ -312,15 +311,14 @@ body {
   left: 56px;
   right: 56px;
   opacity: 0;
-  filter: blur(4px);
-  transition: opacity 0.6s var(--ease-out-expo), filter 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
   pointer-events: none;
   transform: translateY(-40%);
+  will-change: transform, opacity;
 }
 
 .scroll-panel--active {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(-50%);
   pointer-events: auto;
 }
@@ -697,7 +695,6 @@ body {
 
   .scroll-panel {
     transition: opacity 0.1s linear;
-    filter: none !important;
     transform: translateY(-50%) !important;
   }
 

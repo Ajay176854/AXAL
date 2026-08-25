@@ -1,58 +1,62 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-interface ScrollState {
-  /** Overall page scroll progress 0–1 */
-  pageProgress: number;
-  /** Index of the currently active section (-1 = none) */
-  activeSection: number;
-  /** Per-section progress values (0–1 each) */
-  sectionProgress: number[];
+export type ScrollSubscriber = (progress: number) => void;
+export type SectionSubscriber = (progress: number) => void;
+
+interface ScrollDimensions {
+  offsetTop: number;
+  offsetHeight: number;
 }
 
-/**
- * Tracks scroll progress for the page and for each element whose ref
- * is registered via `registerSection`.
- *
- * Uses a lerp (linear interpolation) loop via requestAnimationFrame
- * to make the scroll output values perfectly smooth.
- */
-export function useScrollProgress(sectionCount: number): ScrollState & {
-  registerSection: (index: number, el: HTMLElement | null) => void;
-} {
+export function useScrollProgress(sectionCount: number) {
   const sectionsRef = useRef<(HTMLElement | null)[]>(
     Array.from({ length: sectionCount }, () => null),
   );
 
-  const [state, setState] = useState<ScrollState>({
+  const [activeSection, setActiveSection] = useState(-1);
+  const activeSectionRef = useRef(-1);
+
+  const pageSubscribers = useRef<Set<ScrollSubscriber>>(new Set());
+  const sectionSubscribers = useRef<Map<number, Set<SectionSubscriber>>>(new Map());
+
+  const targetRef = useRef({
     pageProgress: 0,
-    activeSection: -1,
     sectionProgress: Array.from({ length: sectionCount }, () => 0),
   });
 
-  const targetRef = useRef<ScrollState>({
+  const currentRef = useRef({
     pageProgress: 0,
-    activeSection: -1,
     sectionProgress: Array.from({ length: sectionCount }, () => 0),
   });
 
-  const currentRef = useRef<ScrollState>({
-    pageProgress: 0,
-    activeSection: -1,
-    sectionProgress: Array.from({ length: sectionCount }, () => 0),
-  });
-
-  const sectionDimensionsRef = useRef<( { offsetTop: number; offsetHeight: number } | null )[]>(
+  const sectionDimensionsRef = useRef<(ScrollDimensions | null)[]>(
     Array.from({ length: sectionCount }, () => null),
   );
 
   const registerSection = useCallback(
     (index: number, el: HTMLElement | null) => {
       sectionsRef.current[index] = el;
-      // Invalidate cache for this section so it gets re-measured
       sectionDimensionsRef.current[index] = null;
     },
     [],
   );
+
+  const subscribeToPage = useCallback((cb: ScrollSubscriber) => {
+    pageSubscribers.current.add(cb);
+    return () => {
+      pageSubscribers.current.delete(cb);
+    };
+  }, []);
+
+  const subscribeToSection = useCallback((index: number, cb: SectionSubscriber) => {
+    if (!sectionSubscribers.current.has(index)) {
+      sectionSubscribers.current.set(index, new Set());
+    }
+    sectionSubscribers.current.get(index)!.add(cb);
+    return () => {
+      sectionSubscribers.current.get(index)!.delete(cb);
+    };
+  }, []);
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -78,7 +82,6 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const pageProgress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
 
-      // Ensure all registered sections have cached dimensions
       let needsMeasure = false;
       for (let i = 0; i < sectionsRef.current.length; i++) {
         if (sectionsRef.current[i] && !sectionDimensionsRef.current[i]) {
@@ -90,7 +93,7 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
         measureSections();
       }
 
-      let activeSection = -1;
+      let newActiveSection = -1;
       const sectionProgress: number[] = [];
       const viewportHeight = window.innerHeight;
 
@@ -107,21 +110,23 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
           continue;
         }
 
-        // How far the top of the section has scrolled past the top of the viewport
         const scrolledPast = scrollY - dim.offsetTop;
         const progress = Math.min(1, Math.max(0, scrolledPast / sectionHeight));
-
         sectionProgress.push(progress);
 
-        // Section is active when it occupies the viewport midpoint
         const rectTop = dim.offsetTop - scrollY;
         const rectBottom = rectTop + dim.offsetHeight;
         if (rectTop <= viewportHeight * 0.5 && rectBottom >= viewportHeight * 0.5) {
-          activeSection = i;
+          newActiveSection = i;
         }
       }
 
-      targetRef.current = { pageProgress, activeSection, sectionProgress };
+      targetRef.current = { pageProgress, sectionProgress };
+
+      if (newActiveSection !== activeSectionRef.current) {
+        activeSectionRef.current = newActiveSection;
+        setActiveSection(newActiveSection);
+      }
     };
 
     const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
@@ -132,36 +137,30 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
       const target = targetRef.current;
       const current = currentRef.current;
       
-      // Damping factor: lower is smoother/slower, higher is snappier
       const factor = 0.08; 
       const threshold = 0.0001;
-      let needsUpdate = false;
 
       let newPageProgress = lerp(current.pageProgress, target.pageProgress, factor);
       if (Math.abs(newPageProgress - target.pageProgress) < threshold) {
         newPageProgress = target.pageProgress;
       }
-      if (newPageProgress !== current.pageProgress) needsUpdate = true;
+      if (newPageProgress !== current.pageProgress) {
+        current.pageProgress = newPageProgress;
+        pageSubscribers.current.forEach((cb) => cb(newPageProgress));
+      }
 
-      const newSectionProgress = current.sectionProgress.map((cp, i) => {
-        let np = lerp(cp, target.sectionProgress[i] || 0, factor);
+      for (let i = 0; i < current.sectionProgress.length; i++) {
+        let np = lerp(current.sectionProgress[i], target.sectionProgress[i] || 0, factor);
         if (Math.abs(np - (target.sectionProgress[i] || 0)) < threshold) {
           np = target.sectionProgress[i] || 0;
         }
-        if (np !== cp) needsUpdate = true;
-        return np;
-      });
-
-      const newActiveSection = target.activeSection;
-      if (newActiveSection !== current.activeSection) needsUpdate = true;
-
-      if (needsUpdate) {
-        currentRef.current = {
-          pageProgress: newPageProgress,
-          activeSection: newActiveSection,
-          sectionProgress: newSectionProgress,
-        };
-        setState(currentRef.current);
+        if (np !== current.sectionProgress[i]) {
+          current.sectionProgress[i] = np;
+          const subs = sectionSubscribers.current.get(i);
+          if (subs) {
+            subs.forEach((cb) => cb(np));
+          }
+        }
       }
 
       rafId = requestAnimationFrame(loop);
@@ -170,11 +169,19 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', measureSections, { passive: true });
     
-    // Initial calculation
     onScroll();
-    // Start current state directly at target so we don't animate from 0 on page reload
-    currentRef.current = { ...targetRef.current };
-    setState(currentRef.current);
+    
+    currentRef.current = {
+      pageProgress: targetRef.current.pageProgress,
+      sectionProgress: [...targetRef.current.sectionProgress],
+    };
+    pageSubscribers.current.forEach((cb) => cb(currentRef.current.pageProgress));
+    for (let i = 0; i < currentRef.current.sectionProgress.length; i++) {
+      const subs = sectionSubscribers.current.get(i);
+      if (subs) {
+        subs.forEach((cb) => cb(currentRef.current.sectionProgress[i]));
+      }
+    }
 
     rafId = requestAnimationFrame(loop);
 
@@ -186,5 +193,5 @@ export function useScrollProgress(sectionCount: number): ScrollState & {
     };
   }, [sectionCount]);
 
-  return { ...state, registerSection };
+  return { activeSection, registerSection, subscribeToPage, subscribeToSection };
 }
