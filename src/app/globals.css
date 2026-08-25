@@ -294,28 +294,13 @@ body {
   bottom: 0;
   right: 0;
   width: 50%;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 60px 56px;
   pointer-events: none;
-}
-
-/* Gradient backdrop behind text — provides contrast over images */
-.scroll-section__text-backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 60%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.scroll-section__grid--reverse .scroll-section__text-backdrop {
-  right: auto;
-  left: 0;
+  background-color: transparent;
 }
 
 /* ──────────────────────────────────────────────
@@ -633,10 +618,6 @@ body {
     padding: 60px 32px;
   }
 
-  .scroll-section__text-backdrop {
-    width: 70%;
-  }
-
   .scroll-panel {
     left: 32px;
     right: 32px;
@@ -655,10 +636,6 @@ body {
   .scroll-section__text {
     width: 100%;
     padding: 0 20px;
-  }
-
-  .scroll-section__text-backdrop {
-    width: 100%;
   }
 
   .scroll-panel {
